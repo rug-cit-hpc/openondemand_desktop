@@ -1,0 +1,53 @@
+form:
+  - bc_account
+  - bc_email_on_started
+  - bc_num_slots
+  - bc_queue
+  - memory
+  - walltime
+  - desktop
+  - node_type
+
+attributes:
+    bc_account: null
+    bc_email_on_started: null
+    bc_num_slots:
+        label: Number of cores
+        value: 2
+        min: 1
+        step: 1
+        max: 128
+    bc_queue: null
+    memory:
+        label: Amount of memory (GB)
+        widget: 'number_field'
+        value: 8
+        min: 1
+        step: 1        
+        max: 502
+    walltime:
+        label: Wall time
+        help: "Please give the maximum wall time in hours"
+        widget: "number_field"
+        value: 1
+        min: 1
+        max: 12
+        step: 1
+    desktop: mate
+    node_type:
+        label: Partition
+        options:
+        - regular
+        - gpu
+        widget: select
+cluster: login1
+description: 'This app will launch an interactive desktop on a compute node.
+
+    You will have full access to the resources these nodes provide. This is analogous
+    to an interactive batch job.
+    GPU nodes can be used for applications requiring accelerated 3D rendering.
+
+    '
+submit: submit/submit.yml.erb
+title: Hábrók Remote Desktop
+

@@ -1,0 +1,12 @@
+---
+ script:
+  queue_name: <%= node_type %>
+  native:
+    # Hardcode the number of nodes to 1, use num_slots for the number of cores
+    - "--nodes=1"
+    - "--cpus-per-task=<%= bc_num_slots.blank? ? 1 : bc_num_slots.to_i %>"
+    - "--mem=<%= memory.blank? ? 8 : memory.to_i %>G"
+    - "--time=<%=walltime %>:00:00"
+    <%- if node_type == 'gpu' -%>
+    - "--gpus-per-node=1"
+    <%- end -%>
